@@ -1,0 +1,129 @@
+﻿<Window x:Class="TpListContact.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TpListContact"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="0,10,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid/>
+        <Grid>
+            <GroupBox Header="Contact">
+                <StackPanel>
+                    <GroupBox Header="Personne">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="75" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="contact_id" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                                     Text="" VerticalAlignment="Top" Width="120"
+                                     Grid.Row="0" Grid.Column="1" Visibility="Hidden"/>
+                            <Label Content="Nom : " HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0"/>
+                            <TextBox x:Name="contact_nom" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                                     Text="" VerticalAlignment="Top" Width="120"
+                                     Grid.Row="0" Grid.Column="1"/>
+                            <Label Content="Prenom : " HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0"/>
+                            <TextBox x:Name="contact_prenom" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                                     Text="" VerticalAlignment="Top" Width="120"
+                                     Grid.Row="1" Grid.Column="1"/>
+                            <Label Content="Naissance : " HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                   Grid.Row="2" Grid.Column="0"/>
+                            <DatePicker x:Name="contact_naissance" HorizontalAlignment="Left"
+                                     Text="" VerticalAlignment="Top" Width="120"
+                                     Grid.Row="2" Grid.Column="1"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Contact">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="75" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Téléphone : " HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0"/>
+                            <TextBox x:Name="contact_tel" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                                     Text="" VerticalAlignment="Top" Width="120"
+                                     Grid.Row="0" Grid.Column="1"/>
+                            <Label Content="Email : " HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0"/>
+                            <TextBox x:Name="contact_email" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                                     Text="" VerticalAlignment="Top" Width="120"
+                                     Grid.Row="1" Grid.Column="1"/>
+                          
+                            
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Adresse">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="75" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="N°"></Label>
+                            <TextBox x:Name="contact_ad_n" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" MinWidth="50"/>
+
+
+                            <Label Grid.Row="1" Grid.Column="0" Content="Road :"></Label>
+                            <TextBox x:Name="contact_ad_road" Text=""  HorizontalAlignment="Left" TextWrapping="Wrap" 
+                                     VerticalAlignment="Top" Width="120"
+                                     Grid.Row="1" Grid.Column="1"/>
+
+                            <Label Grid.Row="2" Grid.Column="0" Content="Code postal  :"></Label>
+                            <TextBox x:Name="contact_ad_cp" Text=""  VerticalAlignment="Top" Grid.Row="2" Grid.Column="1"/>
+
+                            <Label Grid.Row="3" Grid.Column="0" Content="City :"></Label>
+
+                            <TextBox x:Name="contact_ad_city" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                                     Text="" VerticalAlignment="Top" MinWidth="120"
+                                     Grid.Row="3" Grid.Column="1"/>
+                            
+                            <Label Grid.Row="4" Grid.Column="0" Content="Pays  :"></Label>
+
+                            <TextBox x:Name="contact_ad_country" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                                     Text="" VerticalAlignment="Top" MinWidth="120"
+                                     Grid.Row="4" Grid.Column="1"/>
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="Ajouter_un_contact" Height="35" Content="Ajouter un contact" Click="Ajouter_un_contact_Click"/>
+                </StackPanel>
+            </GroupBox>
+            
+        </Grid>
+        <Grid Grid.Column="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <DataGrid x:Name="contacts_list"  IsReadOnly="True" CanUserAddRows="False"  Grid.Row="1" Margin="0,10,0,10" SelectionChanged="contacts_list_SelectionChanged"/>
+            <Button x:Name="Modifier_un_contact"  Content="Modifier" HorizontalAlignment="Left" Margin="47,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="101" Height="35" Click="Modifier_un_contact_Click"/>
+            <Button x:Name="Supprimer_un_contact" Content="Supprimer" HorizontalAlignment="Left" Margin="232,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="101" Height="35" Click="Supprimer_un_contact_Click"/>
+
+        </Grid>
+    </Grid>
+</Window>
